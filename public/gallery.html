@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Gallery - We build ATVs | Resonance Racing</title>
+  <style>
+    /* navigation bar */
+    .navbar {
+      z-index: 2;
+      position: fixed;
+      box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.2),
+        0 6px 20px 0 rgba(51, 51, 51, 0.2);
+    }
+    nav {
+      width: 100%;
+      height: auto;
+      background-color: black;
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      text-decoration: none;
+      margin: auto;
+      padding-left: 20px;
+      font-size: 20px;
+      color: white;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      color: red;
+      transition: all ease-in-out 300ms;
+    }
+
+    #contactButton {
+      background-color: rgb(238, 0, 0);
+      border-radius: 50px;
+      border: 0px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-family: "Montserrat", sans-serif;
+      color: white;
+
+      font-weight: 500;
+    }
+    #contactButton:hover {
+      transform: scale(1.2);
+      transition: all ease-in-out 300ms;
+    }
+    .nav-link {
+      color: white;
+    }
+    #nav-head {
+      color: white;
+      font-size: 25px;
+      padding-left: 10px;
+    }
+    #button {
+      color: white;
+      border: 0px;
+    }
+    svg {
+      color: white;
+      display: inline-block;
+    }
+
+    svg:hover {
+      color: red;
+      transition: all ease-in-out 300ms;
+    }
+
+    /* footer */
+
+    .footer {
+      width: 100%;
+      height: auto;
+      padding: 5%;
+      background-color: rgb(15, 13, 13);
+      color: white;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    #copyright {
+      margin-top: 15px;
+      font-size: 12px;
+      color: rgb(201, 201, 201);
+    }
+    .iconify {
+      width: auto;
+      height: 50px;
+      margin-bottom: 30px;
+      margin-left: 10px;
+      display: inline-block;
+      color: rgb(201, 201, 201);
+    }
+
+    .contact {
+      font-size: 14px;
+      padding: 10px;
+      font-weight: 500;
+      color: rgb(201, 201, 201);
+    }
+
+    #moto {
+      padding: 20px;
+      font-size: 20px;
+      color: rgb(201, 201, 201);
+    }
+    /* gallery */
+    body {
+      font-family: Arial;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+      position: relative;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+      cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    /* Container for image text */
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Six columns side by side */
+    .column {
+      float: left;
+      width: 16.66%;
+    }
+
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+      opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    #backArrow {
+      position: fixed;
+      z-index: 4;
+      color: #222;
+    }
+  </style>
+  <link rel="shortcut icon" href="rrfavicon.png" />
+  </head>
+  <body>
+     <!-- loader animation -->
+     <div class="spinner-wrapper"><?xml version="1.0" encoding="iso-8859-1"?>
+      <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 29.643 29.643" style="enable-background:new 0 0 29.643 29.643;" xml:space="preserve">
+  
+          <path id=bigGear d="M18.621,12.397l-0.546-1.295c0,0,1.267-2.859,1.157-2.969l-1.678-1.639c-0.117-0.113-2.978,1.191-2.978,1.191l-1.32-0.533
+              c0,0-1.169-2.898-1.327-2.898h-2.37c-0.164,0-1.242,2.906-1.242,2.906L6.998,7.695c0,0-2.922-1.242-3.034-1.135L2.287,8.203
+              c-0.116,0.115,1.219,2.916,1.219,2.916l-0.544,1.295c0,0-2.962,1.139-2.962,1.295v2.322c0,0.16,2.969,1.217,2.969,1.217
+              l0.545,1.291c0,0-1.268,2.861-1.157,2.971l1.679,1.641c0.113,0.111,2.976-1.195,2.976-1.195l1.321,0.537
+              c0,0,1.166,2.896,1.326,2.896h2.37c0.163,0,1.244-2.906,1.244-2.906l1.32-0.535c0,0,2.918,1.242,3.031,1.135l1.678-1.643
+              c0.115-0.111-1.221-2.914-1.221-2.914l0.546-1.295c0,0,2.963-1.143,2.963-1.299v-2.32C21.591,13.453,18.621,12.397,18.621,12.397z
+               M10.795,18.207c-1.905,0-3.459-1.52-3.459-3.387c0-1.865,1.554-3.385,3.459-3.385c1.908,0,3.459,1.52,3.459,3.385
+              C14.254,16.688,12.703,18.207,10.795,18.207z"/>
+          <path id=smallGear d="M28.538,9.693l0.014-0.676c0,0,1.118-1.006,1.091-1.076l-0.414-1.048c-0.031-0.072-1.544-0.062-1.544-0.062l-0.474-0.492
+              c0,0,0.058-1.502-0.013-1.533l-1.041-0.467c-0.074-0.033-1.117,1.035-1.117,1.035l-0.684-0.027c0,0-1.039-1.119-1.109-1.092
+              l-1.061,0.393c-0.071,0.025-0.036,1.518-0.036,1.518l-0.495,0.463c0,0-1.523-0.082-1.554-0.014l-0.457,1.02
+              c-0.032,0.072,1.065,1.119,1.065,1.119l-0.014,0.672c0,0-1.117,1.008-1.09,1.078l0.415,1.049c0.03,0.07,1.543,0.059,1.543,0.059
+              l0.473,0.494c0,0-0.055,1.502,0.016,1.533l1.041,0.465c0.072,0.033,1.116-1.029,1.116-1.029l0.685,0.023
+              c0,0,1.037,1.119,1.109,1.094l1.058-0.393c0.073-0.025,0.038-1.52,0.038-1.52l0.494-0.459c0,0,1.523,0.078,1.555,0.01l0.457-1.02
+              C29.634,10.74,28.538,9.693,28.538,9.693z M26.145,9.9c-0.367,0.82-1.347,1.184-2.187,0.809c-0.836-0.373-1.22-1.346-0.853-2.168
+              c0.365-0.818,1.348-1.18,2.184-0.807C26.126,8.111,26.51,9.082,26.145,9.9z"/>
+
+      </svg></div>
+      <!-- loader animation jquery -->
+      <script type=text/javascript>
+      $(window).on('load',function(){
+        $('.spinner-wrapper').fadeOut();
+      })
+    
+      </script>
+    <div>
+      <a href="index.html" id="backArrow"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="60"
+          height="60"
+          fill="currentColor"
+          class="bi bi-arrow-left-short"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"
+          /></svg
+      ></a>
+    </div>
+
+    <div class="container">
+      <!-- slideshowbox-0 -->
+      <div class="mySlides">
+        <img src="gallery/car24.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car23.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car22.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car21.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car20.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car19.jpg" style="width: 100%" />
+      </div>
+      <!-- slideshowbox-1 -->
+      <div class="mySlides">
+        <img src="gallery/car18.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car17.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car16.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car15.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car14.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car13.jpg" style="width: 100%" />
+      </div>
+
+      <!-- slideshowbox -2 -->
+      <div class="mySlides">
+        <img src="gallery/car12.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car11.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car10.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car9.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car8.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car7.jpg" style="width: 100%" />
+      </div>
+
+      <!-- slideshowbox-3 -->
+      <div class="mySlides">
+        <img src="gallery/car6.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car5.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car4.jpg" style="width: 100%" />
+      </div>
+
+      <div class="mySlides">
+        <img src="gallery/car3.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car2.jpg" style="width: 100%" />
+      </div>
+      <div class="mySlides">
+        <img src="gallery/car1.jpg" style="width: 100%" />
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+
+      <!-- row-0 -->
+      <div class="row">
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car24.jpg"
+            style="width: 100%"
+            onclick="currentSlide(1)"
+            alt="The Woods"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car23.jpg"
+            style="width: 100%"
+            onclick="currentSlide(2)"
+            alt="Cinque Terre"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car22.jpg"
+            style="width: 100%"
+            onclick="currentSlide(3)"
+            alt="Mountains and fjords"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car21.jpg"
+            style="width: 100%"
+            onclick="currentSlide(4)"
+            alt="Northern Lights"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car20.jpg"
+            style="width: 100%"
+            onclick="currentSlide(5)"
+            alt="Nature and sunrise"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car19.jpg"
+            style="width: 100%"
+            onclick="currentSlide(6)"
+            alt="Snowy Mountains"
+          />
+        </div>
+      </div>
+
+      <!-- row 1 -->
+      <div class="row">
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car18.jpg"
+            style="width: 100%"
+            onclick="currentSlide(7)"
+            alt="The Woods"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car17.jpg"
+            style="width: 100%"
+            onclick="currentSlide(8)"
+            alt="Cinque Terre"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car16.jpg"
+            style="width: 100%"
+            onclick="currentSlide(9)"
+            alt="Mountains and fjords"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car15.jpg"
+            style="width: 100%"
+            onclick="currentSlide(10)"
+            alt="Northern Lights"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car14.jpg"
+            style="width: 100%"
+            onclick="currentSlide(11)"
+            alt="Nature and sunrise"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car13.jpg"
+            style="width: 100%"
+            onclick="currentSlide(12)"
+            alt="Snowy Mountains"
+          />
+        </div>
+      </div>
+
+      <!-- row 2 -->
+
+      <div class="row">
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car12.jpg"
+            style="width: 100%"
+            onclick="currentSlide(13)"
+            alt="The Woods"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car11.jpg"
+            style="width: 100%"
+            onclick="currentSlide(14)"
+            alt="Cinque Terre"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car10.jpg"
+            style="width: 100%"
+            onclick="currentSlide(15)"
+            alt="Mountains and fjords"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car9.jpg"
+            style="width: 100%"
+            onclick="currentSlide(16)"
+            alt="Northern Lights"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car8.jpg"
+            style="width: 100%"
+            onclick="currentSlide(17)"
+            alt="Nature and sunrise"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car7.jpg"
+            style="width: 100%"
+            onclick="currentSlide(18)"
+            alt="Snowy Mountains"
+          />
+        </div>
+      </div>
+
+      <!-- row 3 -->
+
+      <div class="row">
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car6.jpg"
+            style="width: 100%"
+            onclick="currentSlide(19)"
+            alt="The Woods"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car5.jpg"
+            style="width: 100%"
+            onclick="currentSlide(20)"
+            alt="Cinque Terre"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car4.jpg"
+            style="width: 100%"
+            onclick="currentSlide(21)"
+            alt="Mountains and fjords"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car3.jpg"
+            style="width: 100%"
+            onclick="currentSlide(22)"
+            alt="Northern Lights"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car2.jpg"
+            style="width: 100%"
+            onclick="currentSlide(23)"
+            alt="Nature and sunrise"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="gallery/car1.jpg"
+            style="width: 100%"
+            onclick="currentSlide(24)"
+            alt="Snowy Mountains"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
+    </script>
+    <div class="footer">
+      <span id="moto">Transforming willpower into horsepower</span>
+      <div class="container-fluid">
+        <a
+          target="_blank"
+          href="https://www.instagram.com/resonance_racing_india/"
+          ><span
+            class="iconify"
+            data-inline="false"
+            data-icon="ant-design:instagram-filled"
+          ></span
+        ></a>
+        <a target="_blank" href="https://www.facebook.com/ResonanceRacing"
+          ><span
+            class="iconify"
+            data-inline="false"
+            data-icon="entypo-social:facebook-with-circle"
+          ></span
+        ></a>
+        <a
+          target="_blank"
+          href="https://www.youtube.com/channel/UCcmFnEGX94P2MvlSd9yPurg/videos"
+          ><span
+            class="iconify"
+            data-inline="false"
+            data-icon="ant-design:youtube-filled"
+          ></span
+        ></a>
+        <p class="contact">resonanceracingindia@gmail.com</p>
+        <p class="contact">+91 77208 08877   +9191682 73812</p>
+        <p id="copyright">
+          Copyright Resonance Racing | Contact
+          <a
+            href="https://www.linkedin.com/in/shree-chatane-a202231b1"
+            >Developer</a
+          >
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+<!-- 
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/gauravv74/AISSM.git
+git push -u origin main -->
